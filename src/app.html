@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		%sveltekit.head%
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">%sveltekit.body%</div>
+	</body>
+</html>
+
+<style>
+	* {
+		box-sizing: border-box;
+		margin: 0;
+	}
+
+	main {
+		font-family: Arial, sans-serif;
+		background: #f4f4f9;
+		color: #333;
+		padding: 1.25rem;
+		margin: 0;
+	}
+
+	main h1 {
+		margin-bottom: 2rem;
+	}
+
+	#repos-container {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1.25rem;
+		justify-content: center;
+	}
+
+	.repository {
+		background: white;
+		box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+		width: 20rem;
+		padding: 1.25rem;
+		border-radius: 0.5rem;
+	}
+
+	.repository h2 {
+		margin-top: 0;
+	}
+
+	.repository a {
+		text-decoration: none;
+		color: #0366d6;
+	}
+
+	.repository a:hover {
+		text-decoration: underline;
+	}
+</style>
+
+<script>
+	function search() {
+		const input = document.getElementById('searchInput');
+		const filterName = input.value.replace(/\s/g, '-').toUpperCase();
+		const filterDescription = input.value.toUpperCase();
+		const repos = document.getElementsByClassName('repository');
+
+		for (let i = 0; i < repos.length; i++) {
+			const a = repos[i].getElementsByTagName('a')[0];
+			const p = repos[i].getElementsByTagName('p')[0];
+			const repoName = (a.textContent || a.innerText).replace(/\s/g, '-').toUpperCase();
+			const repoDescription = (p.textContent || p.innerText).toUpperCase();
+			repos[i].style.display = (repoName.includes(filterName) || repoDescription.includes(filterDescription)) ? '' : 'none';
+		}
+	}
+</script>
