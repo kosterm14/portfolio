@@ -9,14 +9,22 @@
 			.then((response) => response.json())
 			.then((repos) => {
 				repos.sort((a, b) => b.stargazers_count - a.stargazers_count);
-				
+
 				const container = document.getElementById('repos-container');
 				repos.forEach((repo) => {
 					const repository = document.createElement('div');
 					repository.className = 'repository';
 					repository.innerHTML = `
-          <h2><a href="${repo.html_url}" target="_blank">${repo.name}</a></h2>
-          <p>${repo.description || 'No description available.'}</p>
+          	<h2>
+				<a href="${repo.html_url}" target="_blank">${repo.name}</a>
+			</h2>
+
+		  	<p>
+				<a href="${repo.homepage}" target="_blank">${repo.homepage || 'no link:('}</a>
+			</p>
+
+          	<p>${repo.description || 'No description available.'}</p>
+
           <section>⭐ ${repo.stargazers_count} | 👁️ ${repo.watchers_count} | 🍴 ${repo.forks_count}</section>
           `;
 					container.appendChild(repository);
@@ -27,7 +35,7 @@
 </script>
 
 <main>
-	<h1>My GitHub Repositories</h1>
+	<h1>Mijn levenswerk</h1>
 
 	<nav>
 		<input

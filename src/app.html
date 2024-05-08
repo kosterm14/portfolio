@@ -53,6 +53,15 @@
 		color: #0366d6;
 	}
 
+	.repository p a {
+		text-decoration: none;
+		color: red;
+	}
+
+	.repository p {
+		max-width: 20rem;
+	}
+
 	.repository a:hover {
 		text-decoration: underline;
 	}
@@ -70,7 +79,8 @@
 			const p = repos[i].getElementsByTagName('p')[0];
 			const repoName = (a.textContent || a.innerText).replace(/\s/g, '-').toUpperCase();
 			const repoDescription = (p.textContent || p.innerText).toUpperCase();
-			repos[i].style.display = (repoName.includes(filterName) || repoDescription.includes(filterDescription)) ? '' : 'none';
+			repos[i].style.display =
+				repoName.includes(filterName) || repoDescription.includes(filterDescription) ? '' : 'none';
 		}
 	}
 </script>
