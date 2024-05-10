@@ -12,6 +12,16 @@
 </html>
 
 <style>
+	html,
+	body {
+		font-family: 'Neue Montreal';
+		height: 100%;
+	}
+
+	html {
+		overscroll-behavior: none;
+	}
+	
 	* {
 		box-sizing: border-box;
 		margin: 0;
@@ -76,11 +86,16 @@
 
 		for (let i = 0; i < repos.length; i++) {
 			const a = repos[i].getElementsByTagName('a')[0];
-			const p = repos[i].getElementsByTagName('p')[0];
+			const pElements = repos[i].getElementsByTagName('p');
 			const repoName = (a.textContent || a.innerText).replace(/\s/g, '-').toUpperCase();
-			const repoDescription = (p.textContent || p.innerText).toUpperCase();
+			const repoDescription1 = (pElements[0].textContent || pElements[0].innerText).toUpperCase();
+			const repoDescription2 = (pElements[1].textContent || pElements[1].innerText).toUpperCase();
 			repos[i].style.display =
-				repoName.includes(filterName) || repoDescription.includes(filterDescription) ? '' : 'none';
+				repoName.includes(filterName) ||
+				repoDescription1.includes(filterDescription) ||
+				repoDescription2.includes(filterDescription)
+					? ''
+					: 'none';
 		}
 	}
 </script>
