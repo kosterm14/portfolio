@@ -1,12 +1,13 @@
 <script>
-    import TextAnimation from '$lib/components/textAnimation.svelte';
+	import TextAnimation from '$lib/components/textAnimation.svelte';
+	import Carousel from '$lib/components/carousel.svelte';
 
 	import { onMount } from 'svelte';
 	import { gsap } from 'gsap';
 	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 	gsap.registerPlugin(ScrollTrigger);
-    
+
 	onMount(() => {
 		const contentHolderHeight = document.querySelector('.content-holder').offsetHeight;
 		const imgHolderHeight = window.innerHeight;
@@ -19,8 +20,8 @@
 
 		ScrollTrigger.create({
 			trigger: '.website-content',
-			start: 'bottom top',
-			end: 'bottom bottom',
+			start: 'bottom 10%',
+			end: 'bottom 40%',
 			onEnter: () => {
 				gsap.set('.website-content', { position: 'absolute', top: '195%' });
 			},
@@ -87,43 +88,16 @@
 		<div class="img-holder">
 			<img src="./hero.jpg" alt="" />
 		</div>
-
+		
 		<div class="content-holder">
 			<div class="row">
-				<h1>History</h1>
-			</div>
-			<div class="row">
-				<div class="img">
-					<img src="./img-1.jpg" alt="" />
-				</div>
-			</div>
-			<div class="row">
-				<div class="img">
-					<img src="./img-2.jpg" alt="" />
-				</div>
-			</div>
-			<div class="row">
-				<div class="img">
-					<img src="./img-3.jpg" alt="" />
-				</div>
-			</div>
-			<div class="row">
-				<p>
-					In the age of knights and castles, master sculptors skillfully carved stones and marbles
-					with great artistry. From mountains and forests, the raw materials arose to be shaped
-					according to their vision.
-				</p>
-			</div>
-			<div class="row">
-				<p>
-					These artisans, wielding hammers and chisels, brought to life the mysteries of faith and
-					ancient tales in stone. Every stroke, with precision and reverence, narrated stories of
-					virtues, triumphs, and sometimes tragic human tales.
-				</p>
+				<h1>Mijn levenswerk</h1>
+				<Carousel />
 			</div>
 		</div>
 	</div>
 </main>
+
 
 <style>
 	* {
@@ -137,10 +111,16 @@
 	}
 
 	h1 {
-		font-size: 80px;
+		font-size: 5rem;
 		font-weight: 400;
 		text-transform: uppercase;
 		letter-spacing: -0.02em;
+	}
+
+	@media screen and (max-width: 768px) {
+		h1 {
+			font-size: 2rem !important;
+		}
 	}
 
 	p {
@@ -209,6 +189,7 @@
 		background: #000;
 		color: #fff;
 		padding: 1em;
+		height: 100vh;
 	}
 
 	.row {
