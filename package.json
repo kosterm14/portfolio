@@ -21,6 +21,10 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"axios": "^1.7.2",
+		"dotenv": "^16.4.5",
+		"express": "^4.19.2",
+		"graphql-request": "^7.0.1",
 		"gsap": "^3.12.5",
 		"scrollmagic": "^2.0.8",
 		"scrollmagic-plugin-gsap": "^1.0.4"
