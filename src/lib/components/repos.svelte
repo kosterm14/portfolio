@@ -148,7 +148,7 @@
 
 	.other {
 		font-family: Arial, sans-serif;
-		background: #f4f4f9;
+		background: rgb(67, 67, 67);
 		color: #333;
 		padding: 1.25rem;
 		margin: 0;
@@ -157,6 +157,7 @@
 
 	.other h1 {
 		margin-bottom: 2rem;
+		color: white;
 	}
 
 	@keyframes animate {

@@ -90,7 +90,7 @@
 	</div>
 	<div class="website-content">
 		<div class="img-holder">
-			<img src="./bg.jpg" alt="" />
+			<img src="./bg.webp" alt="" />
 		</div>
 
 		<div class="content-holder">
